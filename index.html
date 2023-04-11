@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gustavo Duarte Pedrosa">
+
+    <title>Sushipuc - MVP Sprint 1 - Criado por Gustavo Duarte Pedrosa</title>
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/app.css" rel="stylesheet">
+    <script src="./assets/js/jquery-3.6.4.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+
+</head>
+
+<body class="bg">
+    <div id="loading" class="loading ">
+        <div class="spinner"></div>
+   </div>
+
+    <div class="container">
+        <header>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="./assets/images/sushipuc-logo.svg" alt="Sushipuc Japanese Food"
+                    width="297" height="99">
+                <h2>Faça seu pedido</h2>
+                <p class="lead">O melhor delivery de culinária japonesa do estado do Rio de Janeiro.</p>
+
+            </div>
+
+        </header>
+        <section class="vitrine">
+            <div class="row pd-20">
+                <div class="col-sm-3">
+                    <div class="card item-comida col-sm-12" id="item1">
+                        <div class="card-body">
+                            <img src="./assets/images/products/item1.png">
+                            <h2 class="card-title nome-item">Hot Phil</h2>
+                            <p class="card-text">
+                                <span id="descricao">Roll de salmão crispy com cream cheese e molho tarê</span>
+                            </p>
+                            <div class="oferta clearfix">
+                                <span class="valor">
+                                    <span class="valor-real">2</span>
+                                    <span class="centavos">.99</span>
+                                    <span class="unidade">/unid.</span>
+                                </span>
+                            </div>
+                            <div class="quantidade ">
+                                <div class="input-group inline-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-minus">
+                                            <i class="fa fa-minus"></i>
+
+                                        </button>
+                                    </div>
+                                    <input class="form-control" min="0" name="quantity" value="1"
+                                        type="number">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-light mt-2" type="button" onclick="adicionarItem('#item1')">
+                                    Fazer pedido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <div class="container-fluid carrinho ">
+            <div class="container">
+                <div class="row">
+                    <section class="col-8">
+                        <h2 class="col-12 mb-4">Seu pedido</h2>
+                        <div class="text-center lista d-flex flex-column">
+                            <table class="table table-hover table-dark mb" id="tabela-pedidos">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nº</th>
+                                        <th scope="col">Item</th>
+                                        <th scope="col">Quantidade</th>
+                                        <th scope="col">Valor Unitário</th>
+                                        <th scope="col">Valor Total</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+
+                                </tbody>
+                            </table>
+                            <p>Nenhum item adicionado à lista.</p>
+
+                        </div>
+                    </section>
+                    <section class="col-3">
+                        <h2 class="col-12 mb-4">Resumo</h2>
+                        <div class="resumo d-flex flex-column">
+                            <div>
+                                <div class="total col-12 d-flex align-items-start">
+                                    <div class="col-6 fw-bold">Sub-total</div>
+                                    <div class="col-6 valor-unitario">R$ 15,00</div>
+                                </div>
+                                <div class="total col-12 d-flex align-items-start">
+                                    <div class="col-6 fw-bold">Frete</div>
+                                    <div class="col-6 valor-frete">R$ 9,99</div>
+                                </div>
+                                <div class="total d-flex d-block">
+                                    <div class="col-6 fw-bold">Total</div>
+                                    <div class="col-6 valor-total">R$ 15,00</div>
+                                </div>
+
+                                <button class="btn btn-danger col-12 mt-4" type="button" alt="Função inexistente" disabled>
+                                    Finalizar a compra <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </section>
+                </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Gustavo Duarte Pedrosa. Todos os direitos reservados.</p>
+        <p>MBA em Eng. de Software na PUC-Rio<br>
+            MVP Sprint 1 - Desenv. Full Stack</p>
+
+    </footer>
+
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
+</body>
+
+</html>
