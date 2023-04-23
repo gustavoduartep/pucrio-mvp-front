@@ -25,23 +25,10 @@ A aplicação está dividida em 2 repositórios, sendo:
 - Front-end (Este repositório)
 
 ```powershell
-
 # Acesse a pasta do da aplicação no terminal
-$ cd pucrio-mvp-api
+$ cd pucrio-mvp-front
 
-# Instale as dependências
-$ pip install -r requirements.txt
-
-# Ative o ambiente virtual (Windows)
-$ env/Scripts/Activate.ps1
-
-# Execute a aplicação em modo de desenvolvimento
-(env)$ flask run --host 0.0.0.0 --port 5000
-
-# Para desativar o ambiente, utilize:
-(env)$ Deactivate
-
-# A aplicação será aberta na porta:5000 - acesse http://localhost:5000
+# Execute o arquivo index.html para abrir o front-end em seu browser
 ```
 
 Em caso de dificuldades, por favor, entre em contato.
