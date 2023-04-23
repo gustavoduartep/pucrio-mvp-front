@@ -8,6 +8,7 @@ function listarItens(item) {
       response.itens.forEach(item => exibirItemLista(item.id, item.nome, item.quantidade, item.valor))
       //response.itens.forEach(item => atualizarTabela(item.id, item.nome, item.quantidade, item.valor))
       console.log(response.itens)
+
     },
     error: function (xhr, error) {
       exibirAlerta('error', 'Ops!', `${xhr.responseJSON.message}.`, 3000)
@@ -21,14 +22,14 @@ listarItens()
 // Constrói objetos (itens)
 const dados = (item) => {
 
-  let item_valor_real = $(item + ' .valor-real').text();
-  let item_valor_centavo = $(item + ' .centavos').text();
+  let item_valor_real = $(`${item} .valor-real`).text();
+  let item_valor_centavo = $(`${item} .centavos`).text();
   let concat_valor = item_valor_real + item_valor_centavo;
   let convert_decimal = parseFloat(concat_valor)
 
   return {
-    nome: $(item + ' .nome-item').text(),
-    quantidade: $(item + ' .quantidade input').val(),
+    nome: $(`${item} .nome-item`).text(),
+    quantidade: $(`${item} .quantidade input`).val(),
     valor: convert_decimal
   }
 }
@@ -83,7 +84,7 @@ function removerItem(item) {
         global:false,
         url: "http://127.0.0.1:5000/item?id=" + item,
         success: function (response) {
-          exibirItemLista()
+          $('tr[id="deletar-' + item + '"]').remove();
           Swal.fire({
             title: 'Removido!',
             text: 'Item removido do pedido.',
@@ -103,21 +104,29 @@ function removerItem(item) {
   })
 }
 
+let contador = 1;
+
 const exibirItemLista = (id, nome, quantidade, valor) => {
+
+  const options = { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 }
+  const formatNumber = new Intl.NumberFormat('pt-BR', options)
+
   let itens = [nome, quantidade, valor];
   let tabela = $('#tabela-pedidos > tbody');
   let calculo = valor * quantidade;
-  let moedaUnidade = valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-  let moedaTotal = calculo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+  let moedaUnidade = formatNumber.format(valor)
+  let moedaTotal = formatNumber.format(calculo)
 
   if (itens != null) {
-    $('.carrinho p').hide()
-    for (var i = 0; i < itens[1].length; i++) {
-      var contagem = itens[1][i];
-    }
-    tabela.append(`<tr class="linha" id="deletar-${id}"><th scope="row">${contagem}</th><td>${nome}</td><td>${quantidade}</td><td>${moedaUnidade}</td><td>${moedaTotal}</td><td><button class="btn btn-danger" type="button" href="#DeletarItem" onclick="removerItem(${id})">Remover <i class="fa fa-trash" aria-hidden="true"></i> </button></td></tr>`);
+    $('.carrinho p').hide();
+    tabela.append(`<tr class="linha" id="deletar-${id}"><th scope="row" id="contagem">${contador++}</th><td>${nome}</td><td>${quantidade}</td><td>${moedaUnidade}</td><td>${moedaTotal}</td><td><button class="btn btn-danger" type="button" href="#DeletarItem" onclick="removerItem(${id})">Remover <i class="fa fa-trash" aria-hidden="true"></i> </button></td></tr>`);
+  }
+  else {
+    $('.carrinho p').show();
   }
 }
+
+
 
 $(document).ready(function () {
 

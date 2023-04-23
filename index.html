@@ -18,15 +18,16 @@
 </head>
 
 <body class="bg">
-    <div id="loading" class="loading ">
-        <div class="spinner"></div>
-   </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
 
     <div class="container">
         <header>
             <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4" src="./assets/images/sushipuc-logo.svg" alt="Sushipuc Japanese Food"
-                    width="297" height="99">
+                <img class="d-block mx-auto mb-4" src="./assets/images/sushipuc-logo.svg" alt="Sushipuc Japanese Food" width="297" height="99">
                 <h2>Faça seu pedido</h2>
                 <p class="lead">O melhor delivery de culinária japonesa do estado do Rio de Janeiro.</p>
 
@@ -46,7 +47,7 @@
                             <div class="oferta clearfix">
                                 <span class="valor">
                                     <span class="valor-real">2</span>
-                                    <span class="centavos">.99</span>
+                                    <span class="centavos">.50</span>
                                     <span class="unidade">/unid.</span>
                                 </span>
                             </div>
@@ -71,7 +72,136 @@
 
                             <div class="d-grid gap-2">
                                 <button class="btn btn-outline-light mt-2" type="button" onclick="adicionarItem('#item1')">
-                                    Fazer pedido
+                                    Adicionar item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="card item-comida col-sm-12" id="item2">
+                        <div class="card-body">
+                            <img src="./assets/images/products/item2.png">
+                            <h2 class="card-title nome-item">Maki Phil</h2>
+                            <p class="card-text">
+                                <span id="descricao">Sushi enrolado tradicional com recheio de salmão</span>
+                            </p>
+                            <div class="oferta clearfix">
+                                <span class="valor">
+                                    <span class="valor-real">1</span>
+                                    <span class="centavos">.99</span>
+                                    <span class="unidade">/unid.</span>
+                                </span>
+                            </div>
+                            <div class="quantidade ">
+                                <div class="input-group inline-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-minus">
+                                            <i class="fa fa-minus"></i>
+
+                                        </button>
+                                    </div>
+                                    <input class="form-control" min="0" name="quantity" value="1"
+                                        type="number">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-light mt-2" type="button" onclick="adicionarItem('#item2')">
+                                    Adicionar item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="card item-comida col-sm-12" id="item3">
+                        <div class="card-body">
+                            <img src="./assets/images/products/item3.png" style="margin-left:-25px;">
+                            <h2 class="card-title nome-item">Sushi Salmão</h2>
+                            <p class="card-text">
+                                <span id="descricao">Filé de salmão com pequena porção de arroz</span>
+                            </p>
+                            <div class="oferta clearfix">
+                                <span class="valor">
+                                    <span class="valor-real">3</span>
+                                    <span class="centavos">.99</span>
+                                    <span class="unidade">/unid.</span>
+                                </span>
+                            </div>
+                            <div class="quantidade ">
+                                <div class="input-group inline-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-minus">
+                                            <i class="fa fa-minus"></i>
+
+                                        </button>
+                                    </div>
+                                    <input class="form-control" min="0" name="quantity" value="1"
+                                        type="number">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-light mt-2" type="button" onclick="adicionarItem('#item3')">
+                                    Adicionar item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="card item-comida col-sm-12" id="item4">
+                        <div class="card-body">
+                            <img src="./assets/images/products/item4.png">
+                            <h2 class="card-title nome-item">Ura Phil <br>e Pepino</h2>
+                            <p class="card-text">
+                                <span id="descricao">Uramkai philadelphia com pepino e cream cheese</span>
+                            </p>
+                            <div class="oferta clearfix">
+                                <span class="valor">
+                                    <span class="valor-real">3</span>
+                                    <span class="centavos">.99</span>
+                                    <span class="unidade">/unid.</span>
+                                </span>
+                            </div>
+                            <div class="quantidade ">
+                                <div class="input-group inline-group">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-minus">
+                                            <i class="fa fa-minus"></i>
+
+                                        </button>
+                                    </div>
+                                    <input class="form-control" min="0" name="quantity" value="1"
+                                        type="number">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-plus">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-light mt-2" type="button" onclick="adicionarItem('#item4')">
+                                    Adicionar item
                                 </button>
                             </div>
                         </div>
@@ -86,13 +216,13 @@
     <div class="container-fluid carrinho ">
             <div class="container">
                 <div class="row">
-                    <section class="col-8">
+                    <section class="col">
                         <h2 class="col-12 mb-4">Seu pedido</h2>
                         <div class="text-center lista d-flex flex-column">
                             <table class="table table-hover table-dark mb" id="tabela-pedidos">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Nº</th>
+                                        <th scope="col">N°</th>
                                         <th scope="col">Item</th>
                                         <th scope="col">Quantidade</th>
                                         <th scope="col">Valor Unitário</th>
@@ -109,7 +239,7 @@
 
                         </div>
                     </section>
-                    <section class="col-3">
+                    <!-- <section class="col-3">
                         <h2 class="col-12 mb-4">Resumo</h2>
                         <div class="resumo d-flex flex-column">
                             <div>
@@ -135,7 +265,7 @@
                         </div>
 
 
-                    </section>
+                    </section> -->
                 </div>
         </div>
     </div>
