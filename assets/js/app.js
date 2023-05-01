@@ -1,13 +1,36 @@
-//Listar itens registrados no banco
-function listarItens(item) {
+//Listar itens registrados no banco e monta tabela
+const montarTabelaItens = () => {
   $.ajax({
     type: "GET",
-    global:false,
     url: "http://127.0.0.1:5000/itens",
     success: function (response) {
-      response.itens.forEach(item => exibirItemLista(item.id, item.nome, item.quantidade, item.valor))
-      //response.itens.forEach(item => atualizarTabela(item.id, item.nome, item.quantidade, item.valor))
-      console.log(response.itens)
+      const options = { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 }
+      const formatNumber = new Intl.NumberFormat('pt-BR', options)
+      var tabela = $('#tabela-pedidos > tbody');
+      tabela.empty();
+      console.log(response.itens.length)
+      let contador = 1;
+      response.itens.forEach((item) => {
+        let calculo = item.valor * item.quantidade;
+        let moedaUnidade = formatNumber.format(item.valor)
+        let moedaTotal = formatNumber.format(calculo)
+
+        tabela.append(`
+          <tr class="linha" id="deletar-${item.id}">
+            <th scope="row" id="contagem">${contador++}</th>
+            <td>${item.nome}</td>
+            <td>${item.quantidade}</td>
+            <td>${moedaUnidade}</td>
+            <td>${moedaTotal}</td>
+            <td><button class="btn btn-danger" type="button" href="#DeletarItem" onclick="removerItem(${item.id})">Remover <i class="fa fa-trash" aria-hidden="true"></i> </button></td>
+          </tr>
+        `);
+        if(tabela.length) {
+          $('.carrinho p').hide();
+        } else {
+          $('.carrinho p').show();
+        }
+      });
 
     },
     error: function (xhr, error) {
@@ -16,7 +39,7 @@ function listarItens(item) {
   });
 }
 
-listarItens()
+montarTabelaItens()
 
 
 // Constrói objetos (itens)
@@ -56,7 +79,7 @@ function adicionarItem(item) {
     data: dados(item),
     success: function (response) {
       exibirAlerta('success', 'Sucesso!', 'O item foi adicionado na lista.', 3000)
-      listarItens()
+      montarTabelaItens()
     },
     error: function (xhr, error) {
       exibirAlerta('error', 'Ops!', `${xhr.responseJSON.message}.`, 3000)
@@ -85,6 +108,11 @@ function removerItem(item) {
         url: "http://127.0.0.1:5000/item?id=" + item,
         success: function (response) {
           $('tr[id="deletar-' + item + '"]').remove();
+          montarTabelaItens();
+          const tabela = $('#tabela-pedidos > tbody');
+          if (!tabela.children().length) {
+            $('.carrinho p').show();
+          }
           Swal.fire({
             title: 'Removido!',
             text: 'Item removido do pedido.',
@@ -103,30 +131,6 @@ function removerItem(item) {
     }
   })
 }
-
-let contador = 1;
-
-const exibirItemLista = (id, nome, quantidade, valor) => {
-
-  const options = { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 }
-  const formatNumber = new Intl.NumberFormat('pt-BR', options)
-
-  let itens = [nome, quantidade, valor];
-  let tabela = $('#tabela-pedidos > tbody');
-  let calculo = valor * quantidade;
-  let moedaUnidade = formatNumber.format(valor)
-  let moedaTotal = formatNumber.format(calculo)
-
-  if (itens != null) {
-    $('.carrinho p').hide();
-    tabela.append(`<tr class="linha" id="deletar-${id}"><th scope="row" id="contagem">${contador++}</th><td>${nome}</td><td>${quantidade}</td><td>${moedaUnidade}</td><td>${moedaTotal}</td><td><button class="btn btn-danger" type="button" href="#DeletarItem" onclick="removerItem(${id})">Remover <i class="fa fa-trash" aria-hidden="true"></i> </button></td></tr>`);
-  }
-  else {
-    $('.carrinho p').show();
-  }
-}
-
-
 
 $(document).ready(function () {
 
